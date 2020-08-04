@@ -13,25 +13,58 @@ public class Main {
         final byte percent = 100;
 
         Scanner scan = new Scanner(System.in);
+//
+// PRINCIPAL (1K - 1M)
+//  IF not ASK FOR VALID VALUES
+//
+//  AIR = 0< Number >=30
+//  if not error msg for correct values
 
 //        2. Principal
-        System.out.println("Principal: ");
-        int principalLoanAmount = scan.nextInt();
+        int principalLoanAmount=0;
+
+       while (true) {
+           System.out.println("Principal: ");
+           principalLoanAmount = scan.nextInt();
+           if (principalLoanAmount >= 1000 && principalLoanAmount <= 1_000_000)
+               break;
+           System.out.println("Enter a value between 1,000 and 1,000,000");
+
+
+       }
+
+
+
 
 //       3. Annual Interest rate -percent, divide by 100, divide by 12
 
-        System.out.println("Annual Interest Rate: ");
-        float annualInterestRate = scan.nextFloat();
-        float monthlyInterestRate = annualInterestRate/percent/MONTHS_IN_YEAR;
-        System.out.println("Monthly Interest Rate: " + monthlyInterestRate);
+        float monthlyInterestRate = 0;
+        while(true) {
+            System.out.println("Annual Interest Rate: ");
+             float annualInterestRate = scan.nextFloat();
+
+            if (annualInterestRate>= 1 && annualInterestRate <= 30) {
+                 monthlyInterestRate = annualInterestRate / percent / MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println("Enter a value between 1 and 30");
+
+        }
+
 
 
 //        4. Period
-        System.out.println("Period(Years): ");
-        byte lengthOfLoanInYears = scan.nextByte();
-        int numberOfPayments = lengthOfLoanInYears * MONTHS_IN_YEAR;
 
+        int numberOfPayments = 0;
+        while (true) {
+            System.out.println("Period(Years): ");
+            byte lengthOfLoanInYears = scan.nextByte();
 
+            if(lengthOfLoanInYears >= 1 && lengthOfLoanInYears <=30){
+                numberOfPayments = lengthOfLoanInYears * MONTHS_IN_YEAR;
+                break;
+            }
+        }
 
 //        5. Mortgage Calculation
 
@@ -45,7 +78,7 @@ public class Main {
 
     }
 }
-//
+// 1ST EXERCISE: CREATE MORTGAGE CALCULATOR BASED ON PRIMITIVE VALUES
 //Principal: amount of loan (P)
 //Annual Interest Rate: (divide by 12 bc equation asks for r monthly interest rate)
 //                      Annual interest rate is represented as a perc. to calc
@@ -59,3 +92,58 @@ public class Main {
 //                    r(1+r)^n
 //        M = P        ________
 //                    (1+r)^n - 1
+//
+//
+//
+// Exercise 2: ERROR HANDLING
+//
+// PRINCIPAL (1K - 1M)
+//  IF not ASK FOR VALID VALUES
+//
+//  AIR = 0< Number >=30
+//  if not error msg for correct values
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
