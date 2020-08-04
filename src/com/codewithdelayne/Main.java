@@ -6,84 +6,61 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        1. declare constants -make code self explanatory
-        final byte MONTHS_IN_YEAR = 12;
-        final byte percent = 100;
-
         Scanner scan = new Scanner(System.in);
 
-//
-// PRINCIPAL (1K - 1M)
-//  IF not ASK FOR VALID VALUES
-//
-//  AIR = 0< Number >=30
-//  if not error msg for correct values
-
-//        2. Principal
-        int principalLoanAmount=0;
-
-       while (true) {
-           System.out.println("Principal: ");
-           principalLoanAmount = scan.nextInt();
-           if (principalLoanAmount >= 1000 && principalLoanAmount <= 1_000_000)
-               break;
-           System.out.println("Enter a value between 1,000 and 1,000,000");
+        int principal = 0;
+        float annualInterest = 0;
+        byte years = 0;
 
 
-       }
-
-
-
-
-//       3. Annual Interest rate -percent, divide by 100, divide by 12
-
-        float monthlyInterestRate = 0;
-        while(true) {
-            System.out.println("Annual Interest Rate: ");
-             float annualInterestRate = scan.nextFloat();
-
-            if (annualInterestRate>= 1 && annualInterestRate <= 30) {
-                 monthlyInterestRate = annualInterestRate / percent / MONTHS_IN_YEAR;
+        while (true) {
+            System.out.println("Principal: ");
+            principal = scan.nextInt();
+            if (principal >= 1000 && principal <= 1_000_000)
                 break;
-            }
-            System.out.println("Enter a value between 1 and 30");
-
+            System.out.println("Enter a value between 1,000 and 1,000,000");
         }
 
+        while (true) {
+            System.out.println("Annual Interest Rate: ");
+            annualInterest = scan.nextFloat();
 
+            if (annualInterest >= 1 && annualInterest <= 30)
+                break;
+            System.out.println("Enter a value between 1 and 30");
+        }
 
-//        4. Period
-
-        int numberOfPayments = 0;
         while (true) {
             System.out.println("Period(Years): ");
-            byte lengthOfLoanInYears = scan.nextByte();
+            years = scan.nextByte();
 
-            if(lengthOfLoanInYears >= 1 && lengthOfLoanInYears <=30){
-                numberOfPayments = lengthOfLoanInYears * MONTHS_IN_YEAR;
+            if (years >= 1 && years <= 30)
                 break;
-            }
         }
 
-//        5. Mortgage Calculation
-
-        double monthlyMortgagePayment = principalLoanAmount *
-                (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
-        /(Math.pow(1 + monthlyInterestRate, numberOfPayments) -1);
-
-        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(monthlyMortgagePayment);
+        double mortgage = calculateMortgage(principal, annualInterest, years);
+        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Mortgage: " + mortgageFormatted);
 
 
-       String message= greetUser("DeLayne", "LaBove");
-
     }
+                public static double calculateMortgage (
+                    int principal,
+                    float annualInterestRate,
+                    byte years){
 
-    public static String greetUser(String firstname, String lastName) {
+                    final byte MONTHS_IN_YEAR = 12;
+                    final byte percent = 100;
 
-        return "hello " + firstname + " " + lastName;
+                   float monthlyInterestRate = annualInterestRate / percent / MONTHS_IN_YEAR;
+                   float numberOfPayments = years * MONTHS_IN_YEAR;
+                    double mortgage = principal *
+                            (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
+                            / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
 
-    }
+                    return mortgage;
+                }
+
 
 
 
