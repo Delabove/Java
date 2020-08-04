@@ -1,18 +1,17 @@
 package com.codewithdelayne;
-import java.awt.*;
 import java.text.NumberFormat;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.concurrent.SynchronousQueue;
 
 public class Main {
 
     public static void main(String[] args) {
+
 //        1. declare constants -make code self explanatory
         final byte MONTHS_IN_YEAR = 12;
         final byte percent = 100;
 
         Scanner scan = new Scanner(System.in);
+
 //
 // PRINCIPAL (1K - 1M)
 //  IF not ASK FOR VALID VALUES
@@ -76,7 +75,18 @@ public class Main {
         System.out.println("Mortgage: " + mortgageFormatted);
 
 
+       String message= greetUser("DeLayne", "LaBove");
+
     }
+
+    public static String greetUser(String firstname, String lastName) {
+
+        return "hello " + firstname + " " + lastName;
+
+    }
+
+
+
 }
 // 1ST EXERCISE: CREATE MORTGAGE CALCULATOR BASED ON PRIMITIVE VALUES
 //Principal: amount of loan (P)
@@ -103,15 +113,15 @@ public class Main {
 //  AIR = 0< Number >=30
 //  if not error msg for correct values
 //
+// CLEAN CODE
 //
+// methods should only have about 20 lines of code
 //
+// Match the pieces that go together, for example numberOfPayments
 //
+// Look for repetitive patters, for example while loops
 //
-//
-//
-//
-//
-//
+//  EXTRACTING METHODS
 //
 //
 //
